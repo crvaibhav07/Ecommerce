@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LoginComponent } from './login/login.component';
-import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { HomeComponent } from './dasboard/home/home.component';
 import { HeaderComponent } from './dasboard/header/header.component';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -30,6 +30,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { AuthInterceptor } from './auth-interceptor.interceptor';
 // import { PipePipe } from './pipe/pipe.pipe';
 // import { FilterPipePipe } from './pipe/filter-pipe.pipe';
 
@@ -66,18 +67,15 @@ MatGridListModule,
 MatCardModule,
 MatCheckboxModule,
 MatMenuModule,
-MatTableModule
+MatTableModule,
+HttpClientModule
 
   ],
   providers: [
     provideAnimationsAsync(),
     provideHttpClient(),
-    provideHttpClient(withInterceptorsFromDi()), 
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    
   ],
   bootstrap: [AppComponent]
 })
