@@ -17,24 +17,15 @@ export class HeaderComponent {
 constructor(private productService:ProductsService, private authService:AuthService, private router: Router, private cartService: CartService){}
 
 ngOnInit():void{
-this.cartService.getProduct().subscribe(res => {
-  this.totalItems = res.length
-})
 }
 
   filterProducts(event:any): void {
     let categorySelected = event.target.value
     this.productService.category.next(categorySelected)
     
-    // this.Home.hello();
-
-    // this.authService.showSibling.next(categorySelected);
-    // console.log(this.products,'header');
-    
   }
 
   search(){
-    console.log(this.searchTerm);
     this.productService.search.next(this.searchTerm);
   }
 

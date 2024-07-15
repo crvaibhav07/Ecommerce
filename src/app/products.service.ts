@@ -21,7 +21,6 @@ public category = new BehaviorSubject<string>("");
     if(category){
       apiUrl += '/category/' + category;
     }
-    console.log(apiUrl);
     return this.http.get<Product[]>(apiUrl);
   }
 }

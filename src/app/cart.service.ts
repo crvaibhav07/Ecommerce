@@ -30,7 +30,6 @@ this.productList.next(product)
     this.cartItemList.push(product);
     this.productList.next(this.cartItemList)
 this.getTotalPrice();
-console.log(this.cartItemList);
 
   }
 
@@ -57,10 +56,5 @@ this.cartItemList = [];
 this.productList.next(this.cartItemList);
 }
 
-// ------------
-// updateCartItem(itemId: number, updatedItem: any): Observable<any> {
-//   const patchUrl = `${this.apiUrl}/${itemId}`;
-//   return this.http.patch<any>(patchUrl, updatedItem);
-// }
 
 }

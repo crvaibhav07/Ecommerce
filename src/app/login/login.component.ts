@@ -32,11 +32,9 @@ export class LoginComponent {
     this.authService.login(this.username, this.password)
       .subscribe(result => {
         if (result) {
-          // this.authService.isLogedin.next(true);
           this.comp.onSucessfulLogin();
           // Navigate to home page or any other desired route on successful login
           this.router.navigate(['/home']);
-          console.log('success');
         } else {
           // Show error message if login failed
           this.loginError = true;
@@ -53,7 +51,6 @@ export class LoginComponent {
       this.userService.userExists(username, email).subscribe(
         (exists: boolean) => {
           if (exists) {
-            console.log('already exist');
             
             this.signupError = 'Username or email already exists. Please choose another.';
           } else {
@@ -67,10 +64,8 @@ export class LoginComponent {
             
             this.userService.signUpUser(userDetails).subscribe(
               (response: User) => {
-                console.log('User signed up successfully:', response);
                 this.toggleForm('signup');
 
-                // Optionally, you can redirect to login page or handle success message
               },
               (error) => {
                 console.error('Error signing up:', error);

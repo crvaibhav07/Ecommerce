@@ -43,7 +43,6 @@ export class HomeComponent {
   fetchProducts(): void {
     if (this.selectedCategories ) {
       let category = this.selectedCategories
-      console.log(category);
       this.getProducts(category)
           }
           else{
@@ -55,41 +54,15 @@ export class HomeComponent {
     this.productService.getProducts(category)
           .subscribe((products: Product[]) => {
             this.products = products;
-console.log(products);
 
-            // ------------
             this.products.forEach((a:Product)=>{
               Object.assign(a,{quantity:1, total: a.price})
             })
           });
   }
 
-  // callFromHeader(){
-  //   console.log(this.active);
-    
-  //   this.authService.showSibling.subscribe(res => {
-  //     this.active = res
-  //   });
-
-  //   console.log(this.active);
-  //   if(this.active){
-  //     this.onCategoryChange(this.active)
-  //   }
-
-    
-  // }
 
   onCategoryChange(category:string): void {
-    
-    // if (event?.target?.checked && !this.selectedCategories.includes(category)) {
-    //   this.selectedCategories.push(category);
-    // } else {
-    //   const index = this.selectedCategories.indexOf(category);
-    //   if (index !== -1) {
-    //     this.selectedCategories.splice(index, 1);
-    //   }
-    // }
-    console.log('Selected Categories:', this.selectedCategories);
     if(category == 'none'){
       this.selectedCategories = ''
     }
@@ -103,25 +76,15 @@ console.log(products);
 this.cartService.addToCart(product);
   }
 
-  // addItemToCart(product: Product) {
-  //   const cartItem = {
-  //     productId: product.id,
-  //     quantity: 1 // Hardcoding for simplicity, you can make this dynamic based on user input
-  //   };
+  incrementQuantity(product: Product): void {
+    product.quantity++;
+  }
 
-  //   this.http.post('https://fakestoreapi.com/carts', cartItem)
-  //     .subscribe(
-  //       (response) => {
-  //         console.log('Item added to cart:', response);
-  //         // Optionally, you can handle success (e.g., show a success message)
-  //       },
-  //       (error) => {
-  //         console.error('Error adding item to cart:', error);
-  //         // Optionally, you can handle errors (e.g., show an error message)
-  //       }
-  //     );
-  // }
-
+  decrementQuantity(product: Product): void {
+    if (product.quantity > 1) {
+      product.quantity--;
+    }
+  }
  
 }
 

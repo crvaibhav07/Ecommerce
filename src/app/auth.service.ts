@@ -37,12 +37,11 @@ export class AuthService {
     return this.http.post<LoginResponse>(this.apiUrl, payload)
       .pipe(
         map(response => {
-          // Check if login was successful based on the response
+          // Check if login was successful 
           if (response.token) {
-            // Store token in localStorage or session storage if needed
+            // Store token in localStorage
             localStorage.setItem('token', response.token);
            this.isLoggedIn();
-            console.log(response.token);
             return true;
           }
           return false;
@@ -52,7 +51,7 @@ export class AuthService {
   }
 
   logout(): void {
-    // Clear token from localStorage or session storage if needed
+    // Clear token from localStorage 
     localStorage.removeItem('token');
     this.isLogedin = false;
     localStorage.removeItem(this.AUTH_KEY);
@@ -60,8 +59,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    // Check if token exists in localStorage or session storage
-    console.log('');
+    // Check if token exists in localStorage
     this.isLogedin = true;
     localStorage.setItem(this.AUTH_KEY, 'true');
     return !!localStorage.getItem('token');

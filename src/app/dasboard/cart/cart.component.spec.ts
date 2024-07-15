@@ -23,9 +23,9 @@ fdescribe('CartComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CartComponent ],
       providers: [ CartService,
-        provideHttpClient(), // Provide the HttpClient along with HttpClientTesting
+        provideHttpClient(), 
         provideHttpClientTesting(),
-       ] // Provide the real CartService
+       ]
     }).compileComponents();
   });
 

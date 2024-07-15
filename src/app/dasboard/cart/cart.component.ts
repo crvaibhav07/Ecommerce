@@ -22,13 +22,13 @@ export class CartComponent {
       this.products = res;
       // this.updatedItem = { ...this.products[0] };
       this.grandTotal = this.cartService.getTotalPrice();
-      console.log(this.products);
       
     })
 
   }
 
-  removeItem(item){
+  removeItem(item, price){
+    this.grandTotal -= price
 this.cartService.removeCartItem(item)
   }
 
@@ -36,11 +36,4 @@ this.cartService.removeCartItem(item)
     this.cartService.removeAllCart()
   }
 
-
-  // updateItem(n) {
-  //   this.cartService.updateCartItem(this.updatedItem.id, n).subscribe(response => {
-  //     console.log('Item updated successfully', response);
-  //     // Optionally, handle the response or update UI
-  //   });
-  // }
 }

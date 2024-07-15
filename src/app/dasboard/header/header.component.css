@@ -15,21 +15,21 @@ span{
 }
 
 .search-wrapper {
-    display: inline-flex; /* Use flexbox to align items */
-    align-items: center; /* Center items vertically */
-    position: relative; /* Make sure the icon is positioned relative to this container */
+    display: inline-flex; 
+    align-items: center; 
+    position: relative; 
   }
   
   .search-wrapper mat-icon {
-    position: absolute; /* Position the icon absolutely */
-    left: 10px; /* Adjust as needed */
-    pointer-events: none; /* Ensure icon doesn't interfere with input */
+    position: absolute; 
+    left: 10px; 
+    pointer-events: none;
   }
   
   .search-wrapper input {
-    padding-left: 30px; /* Adjust to accommodate the icon */
-    width: 100%; /* Ensure input takes full width */
-    box-sizing: border-box; /* Include padding and border in width calculation */
+    padding-left: 30px; 
+    width: 100%; 
+    box-sizing: border-box; 
       
 }
 

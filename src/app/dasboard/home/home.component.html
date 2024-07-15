@@ -30,11 +30,9 @@
                       <p>{{product.title | slice:0:50}} ...<p>
                     </mat-card-content>
                     <mat-card-actions>
-                      <!-- <p class="availability">In Stock</p> -->
                      <button (click)="addToCart(product)">Add to cart</button>
-                      <div class="add-to-cart "><span>-</span><span class="total">1</span><span >+</span></div>
+                     <div class="add-to-cart "><span (click)="decrementQuantity(product)">-</span><span class="total">{{ product.quantity }}</span><span (click)="incrementQuantity(product)" >+</span></div>
                       <p>$ {{product.price}}</p>
-
                     </mat-card-actions>
                   </mat-card>
             </mat-grid-tile>
