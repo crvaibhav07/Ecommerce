@@ -1,0 +1,43 @@
+ <div class="main">
+    <div class="filter-section" >
+        <!-- <div >
+            <h6>Categories</h6>
+              <div class="checkbox" *ngFor="let category of categories">
+                <input type="checkbox" id="{{ category }}" (change)="onCategoryChange(category, $event)">
+                <label for="{{ category }}">{{ category }}</label>
+              </div>
+          </div> -->
+          <div>
+            <h6>Categories</h6>
+            <div class="radio" *ngFor="let category of categories">
+              <input type="radio" name="category" id="{{ category }}" [value]="category" (change)="onCategoryChange(category)">
+              <label for="{{ category }}">{{ category }}</label>
+            </div>
+          </div>
+    </div>
+    <div class="product-section" >
+        <div>
+        <p *ngIf="selectedCategories !== ''">Applied Filter:</p>
+        <button *ngIf="selectedCategories !== ''" class="applied-filters" >{{selectedCategories}}</button>
+    </div>
+    <div>
+    </div>
+        <mat-grid-list cols="3" rowHeight="4:5" [gutterSize]="'30px'">
+            <mat-grid-tile *ngFor="let product of products | filterPipe:searchKey:'title'">
+                <mat-card class="style-card" appearance="outlined">
+                    <img [src]="product.image" alt="{{ product.title }}" />
+                    <mat-card-content class="contect">
+                      <p>{{product.title | slice:0:50}} ...<p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <!-- <p class="availability">In Stock</p> -->
+                     <button (click)="addToCart(product)">Add to cart</button>
+                      <div class="add-to-cart "><span>-</span><span class="total">1</span><span >+</span></div>
+                      <p>$ {{product.price}}</p>
+
+                    </mat-card-actions>
+                  </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </div>
+ </div>

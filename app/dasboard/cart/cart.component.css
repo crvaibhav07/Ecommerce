@@ -1,0 +1,31 @@
+.empty{
+    text-align: center;
+    margin-top: 100px;
+    color: blueviolet;
+}
+
+.cart-container{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.summary{
+    border: 1px solid grey;
+    padding: 45px;
+    height: 230px;
+}
+
+td{
+    padding: 20px;
+}
+
+
+.continue-shopping{
+    text-align: center;
+}
+
+.continue-shopping:hover{
+cursor: pointer;
+}
+
